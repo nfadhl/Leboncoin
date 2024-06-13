@@ -11,7 +11,7 @@ import SwiftUI
 struct LBCTechnicalTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AdsListView()
         }
     }
 }
