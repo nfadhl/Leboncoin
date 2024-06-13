@@ -1,0 +1,37 @@
+//
+//  AdDetailsViewModelTest.swift
+//  LBCTechnicalTestTests
+//
+//  Created by Fadhl Nader on 13/06/2024.
+//
+
+import XCTest
+@testable import LBCTechnicalTest
+
+final class AdDetailsViewModelTest: XCTestCase {
+
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testInit() async  {
+        //Given
+        let mockAdsService = MockAdsService()
+        let apiClient = AdsService(networkClient: mockAdsService)
+        let ad = try? await apiClient.fetchAds().first!
+        
+        //When
+        let adDetailsViewModel = AdDetailsViewModel(adViewModel: AdViewModel(ad: AdModel(ad: ad!)))
+        
+        //Then
+        XCTAssertEqual(adDetailsViewModel.isUrgent,false)
+        XCTAssertEqual(adDetailsViewModel.price,"€140.00")
+        XCTAssertEqual(adDetailsViewModel.creationDate,"6 November 2019")
+        XCTAssertEqual(adDetailsViewModel.description,"Magnifique Statuette homme noir assis fumant le cigare en terre cuite et plâtre polychrome réalisée à la main.  Poids  1,900 kg en très bon état, aucun éclat  !  Hauteur 18 cm  Largeur : 16 cm Profondeur : 18cm  Création Jacky SAMSON  OPTIMUM  PARIS  Possibilité de remise sur place en gare de Fontainebleau ou Paris gare de Lyon, en espèces (heure et jour du rendez-vous au choix). Envoi possible ! Si cet article est toujours visible sur le site c'est qu'il est encore disponible")
+    }
+
+}

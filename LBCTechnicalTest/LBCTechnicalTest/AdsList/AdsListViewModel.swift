@@ -14,17 +14,17 @@ final class AdsListViewModel: ObservableObject {
     @Published var adsViewModel = [AdViewModel]()
     private let networkClient: NetworkClientProtocol
     
-    init(networkClient: NetworkClient) {
+    init(networkClient: NetworkClientProtocol) {
         self.networkClient = networkClient
-        CategoriesManager.shared.loadAllCategories()
+        CategoriesRepository.shared.loadAllCategories()
         fetchAds()
     }
     
     // Fetches ads using the LBCAPIClient, converts them into AdViewModel, sorts them by date
-    private func fetchAds() {
+    func fetchAds() {
         Task {
             do {
-                let ads = try await AdsService(networkClient: NetworkClient()).fetchAds()
+                let ads = try await AdsService(networkClient: networkClient).fetchAds()
                 ads.forEach { adsViewModel.append(AdViewModel(ad: AdModel(ad: $0))) }
                 self.adsViewModel = sortedAdsByDate(ads: self.adsViewModel)
             } catch {

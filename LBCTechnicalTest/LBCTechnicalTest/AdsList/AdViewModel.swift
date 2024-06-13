@@ -25,6 +25,6 @@ final class AdViewModel: Identifiable {
         self.isUrgent = ad.isUrgent
         self.price = ad.price.formatted(.currency(code: "EUR"))
         self.creationDate = ad.creationDate.convertDateString() ?? ""
-        self.categoryName = CategoriesManager.shared.categories.first(where: { $0.categoryID == ad.categoryID })?.name ?? ""
+        self.categoryName = CategoriesRepository.shared.categories.first(where: { $0.categoryID == ad.categoryID })?.name ?? ""
     }
 }

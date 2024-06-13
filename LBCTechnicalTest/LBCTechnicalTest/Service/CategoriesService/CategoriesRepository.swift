@@ -6,9 +6,9 @@
 //
 
 import Foundation
-final class CategoriesManager: NSObject {
+final class CategoriesRepository: NSObject {
 
-    static let shared = CategoriesManager()
+    static let shared = CategoriesRepository()
 
     var categories: [CategoryDTO] = []
 
