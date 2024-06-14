@@ -13,7 +13,7 @@ final class AdViewModel: Identifiable {
     var title: String
     var categoryName: String
     var creationDate: String
-    var price: String
+    var price: String = ""
     var image: String
     var isUrgent: Bool
     
@@ -23,8 +23,15 @@ final class AdViewModel: Identifiable {
         self.title = ad.title
         self.image = ad.image
         self.isUrgent = ad.isUrgent
-        self.price = ad.price.formatted(.currency(code: "EUR"))
         self.creationDate = ad.creationDate.convertDateString() ?? ""
         self.categoryName = CategoriesRepository.shared.categories.first(where: { $0.categoryID == ad.categoryID })?.name ?? ""
+        self.price = self.formatCurrency(ad.price, currencyCode: "EUR")
+    }
+    
+    func formatCurrency(_ value: Double, currencyCode: String) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = currencyCode
+        return formatter.string(from: NSNumber(value: value)) ?? ""
     }
 }

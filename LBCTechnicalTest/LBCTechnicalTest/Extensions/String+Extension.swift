@@ -8,12 +8,6 @@
 import Foundation
 
 extension String {
-    
-    func convertToDate() -> Date {
-        let formatter = ISO8601DateFormatter()
-        return formatter.date(from: self) ?? Date()
-    }
-    
     func convertDateString() -> String? {
         let dateFormatterInput = DateFormatter()
         dateFormatterInput.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -27,5 +21,4 @@ extension String {
             return nil
         }
     }
-    
 }

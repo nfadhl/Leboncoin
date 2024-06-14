@@ -29,8 +29,10 @@ final class AdViewModelTest: XCTestCase {
         
         //Then
         XCTAssertEqual(adViewModel.adID, 1461267313)
+        XCTAssertEqual(adViewModel.title,"Statue homme noir assis en plâtre polychrome")
         XCTAssertEqual(adViewModel.isUrgent,false)
         XCTAssertEqual(adViewModel.price,"€140.00")
+        XCTAssertEqual(adViewModel.image,"https://raw.githubusercontent.com/leboncoin/paperclip/master/ad-thumb/2c9563bbe85f12a5dcaeb2c40989182463270404.jpg")
         XCTAssertEqual(adViewModel.creationDate,"6 November 2019")
     }
 

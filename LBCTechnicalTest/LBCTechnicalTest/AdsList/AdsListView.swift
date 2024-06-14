@@ -8,24 +8,31 @@
 import SwiftUI
 
 struct AdsListView: View {
-    @StateObject private var adsListViewModel = AdsListViewModel(networkClient: NetworkClient())
+    @StateObject private var adsListViewModel = AdsListViewModel()
     @State private var selectedAd: AdViewModel?
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
                 HeaderView(title: "Ads")
-                ScrollView{
-                    LazyVStack(spacing: 30){
-                        ForEach(adsListViewModel.adsViewModel){ adViewModel in
-                            NavigationLink {
-                                AdDetailsView(adDetailsVM: AdDetailsViewModel(adViewModel: adViewModel))
-                            } label: {
-                               AdView(ad: adViewModel)
+               
+                if let errorMessage = adsListViewModel.errorMessage {
+                    ErrorView(errorMessage: errorMessage, retryAction: {
+                        adsListViewModel.fetchAds()
+                    })
+                    .padding(20)
+                } else {
+                    ScrollView{
+                        LazyVStack(spacing: 30){
+                            ForEach(adsListViewModel.adsViewModel){ adViewModel in
+                                NavigationLink {
+                                    AdDetailsView(adDetailsVM: AdDetailsViewModel(adViewModel: adViewModel))
+                                } label: {
+                                   AdView(ad: adViewModel)
+                                }
                             }
                         }
+                        .padding()
                     }
-                    .padding()
-                    
                 }
             }
         }

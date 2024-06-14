@@ -13,22 +13,23 @@ final class CategoriesService: CategoriesServiceProtocol {
     
     
     private var path: String {
-        // Base URL for Leboncoin API
-        let absolutePath =  "https://raw.githubusercontent.com/leboncoin/paperclip/master"
-        return absolutePath+"/categories.json"
+        return (URLsManager.shared.getBaseURL() ?? "")+"/categories.json"
     }
     
-    init(networkClient: NetworkClientProtocol) {
+    init(networkClient: NetworkClientProtocol = NetworkClient()) {
         self.networkClient = networkClient
     }
     
     func fetchCategories() async throws -> [CategoryDTO] {
-         if let url = URL(string: path) {
-            let data  = try await networkClient.makeAPICall(url: url)
-            let categories: [CategoryDTO] = try JSONDecoder().decode([CategoryDTO].self, from: data)
+        guard let url = URL(string: path) else {
+            throw NetworkError.invalidURL
+        }
+        let data  = try await networkClient.makeAPICall(url: url)
+        do {
+            let categories = try JSONDecoder().decode([CategoryDTO].self, from: data)
             return categories
-        } else {
-            return []
+        } catch {
+            throw NetworkError.decodeError
         }
     }
 }

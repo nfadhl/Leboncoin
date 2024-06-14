@@ -41,6 +41,9 @@
 		1E823A7C2C1B82250005B2FF /* AdsListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E823A7B2C1B82250005B2FF /* AdsListViewModelTest.swift */; };
 		1E823A7E2C1B82380005B2FF /* AdViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E823A7D2C1B82380005B2FF /* AdViewModelTest.swift */; };
 		1E823A882C1B837F0005B2FF /* AdDetailsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E823A872C1B837F0005B2FF /* AdDetailsViewModelTest.swift */; };
+		1E823A8A2C1C3CBE0005B2FF /* APIURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E823A892C1C3CBE0005B2FF /* APIURLs.plist */; };
+		1E823A8C2C1C40D60005B2FF /* URLsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E823A8B2C1C40D60005B2FF /* URLsManager.swift */; };
+		1E823A8E2C1C43460005B2FF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E823A8D2C1C43460005B2FF /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		1E823A7B2C1B82250005B2FF /* AdsListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsListViewModelTest.swift; sourceTree = "<group>"; };
 		1E823A7D2C1B82380005B2FF /* AdViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewModelTest.swift; sourceTree = "<group>"; };
 		1E823A872C1B837F0005B2FF /* AdDetailsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailsViewModelTest.swift; sourceTree = "<group>"; };
+		1E823A892C1C3CBE0005B2FF /* APIURLs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIURLs.plist; sourceTree = "<group>"; };
+		1E823A8B2C1C40D60005B2FF /* URLsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLsManager.swift; sourceTree = "<group>"; };
+		1E823A8D2C1C43460005B2FF /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,11 +142,12 @@
 				1E823A452C1AFB9A0005B2FF /* Model */,
 				1E823A4A2C1AFCA30005B2FF /* AdsList */,
 				1E823A4C2C1AFCCF0005B2FF /* Details */,
-				1E823A582C1B048D0005B2FF /* Utils */,
+				1E823A582C1B048D0005B2FF /* CustomViews */,
 				1E823A4D2C1AFCDE0005B2FF /* Extensions */,
 				1E823A042C1AF9AF0005B2FF /* LBCTechnicalTestApp.swift */,
 				1E823A082C1AF9B50005B2FF /* Assets.xcassets */,
 				1E823A0A2C1AF9B50005B2FF /* Preview Content */,
+				1E823A892C1C3CBE0005B2FF /* APIURLs.plist */,
 			);
 			path = LBCTechnicalTest;
 			sourceTree = "<group>";
@@ -181,6 +188,7 @@
 				1E823A362C1AFB070005B2FF /* DTO */,
 				1E823A3C2C1AFB410005B2FF /* AdsService */,
 				1E823A3B2C1AFB330005B2FF /* CategoriesService */,
+				1E823A8B2C1C40D60005B2FF /* URLsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -250,13 +258,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		1E823A582C1B048D0005B2FF /* Utils */ = {
+		1E823A582C1B048D0005B2FF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				1E823A5B2C1B04E10005B2FF /* ImageLoader.swift */,
 				1E823A592C1B04AC0005B2FF /* URLImageView.swift */,
+				1E823A8D2C1C43460005B2FF /* ErrorView.swift */,
 			);
-			path = Utils;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		1E823A632C1B79060005B2FF /* Service */ = {
@@ -402,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E823A0C2C1AF9B50005B2FF /* Preview Assets.xcassets in Resources */,
+				1E823A8A2C1C3CBE0005B2FF /* APIURLs.plist in Resources */,
 				1E823A092C1AF9B50005B2FF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +437,7 @@
 				1E823A472C1AFBAC0005B2FF /* AdModel.swift in Sources */,
 				1E823A422C1AFB770005B2FF /* AdsServiceProtocol.swift in Sources */,
 				1E823A602C1B08DE0005B2FF /* AdDetailsView.swift in Sources */,
+				1E823A8E2C1C43460005B2FF /* ErrorView.swift in Sources */,
 				1E823A622C1B280F0005B2FF /* CategoriesRepository.swift in Sources */,
 				1E823A382C1AFB1F0005B2FF /* AdDTO.swift in Sources */,
 				1E823A3E2C1AFB590005B2FF /* CategoriesServiceProtocol.swift in Sources */,
@@ -434,6 +445,7 @@
 				1E823A3A2C1AFB2C0005B2FF /* CategoryDTO.swift in Sources */,
 				1E823A4F2C1AFCF50005B2FF /* String+Extension.swift in Sources */,
 				1E823A442C1AFB870005B2FF /* AdsService.swift in Sources */,
+				1E823A8C2C1C40D60005B2FF /* URLsManager.swift in Sources */,
 				1E823A532C1AFD8C0005B2FF /* AdsListView.swift in Sources */,
 				1E823A322C1AFAD30005B2FF /* NetworkClientProtocol.swift in Sources */,
 				1E823A052C1AF9AF0005B2FF /* LBCTechnicalTestApp.swift in Sources */,
@@ -607,6 +619,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,6 +648,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

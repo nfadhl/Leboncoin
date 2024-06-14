@@ -12,10 +12,9 @@ import Combine
 final class AdsListViewModel: ObservableObject {
     
     @Published var adsViewModel = [AdViewModel]()
-    private let networkClient: NetworkClientProtocol
+    @Published var errorMessage: String?
     
-    init(networkClient: NetworkClientProtocol) {
-        self.networkClient = networkClient
+    init() {
         CategoriesRepository.shared.loadAllCategories()
         fetchAds()
     }
@@ -24,12 +23,15 @@ final class AdsListViewModel: ObservableObject {
     func fetchAds() {
         Task {
             do {
-                let ads = try await AdsService(networkClient: networkClient).fetchAds()
+                let ads = try await AdsService().fetchAds()
                 ads.forEach { adsViewModel.append(AdViewModel(ad: AdModel(ad: $0))) }
                 self.adsViewModel = sortedAdsByDate(ads: self.adsViewModel)
             } catch {
-                // Handle the error
-                print("Error fetching ads: \(error)")
+                if let apiError = error as? NetworkError {
+                    self.errorMessage = apiError.rawValue
+                } else {
+                    self.errorMessage = "An error occurred"
+                }
             }
         }
     }

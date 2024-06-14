@@ -11,6 +11,7 @@ import Combine
 
 final class AdDetailsViewModel : ObservableObject {
     
+    @Published  var adID: Int
     @Published  var title: String = ""
     @Published  var categoryName: String = ""
     @Published  var creationDate: String = ""
@@ -22,6 +23,7 @@ final class AdDetailsViewModel : ObservableObject {
     
    // Initializes an AdDetailsViewModel using AdViewModel
     init(adViewModel: AdViewModel) {
+        self.adID = adViewModel.adID
         self.title = adViewModel.title
         self.categoryName = adViewModel.categoryName
         self.image = adViewModel.image
