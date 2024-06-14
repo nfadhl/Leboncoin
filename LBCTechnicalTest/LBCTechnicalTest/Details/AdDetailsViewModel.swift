@@ -19,6 +19,7 @@ final class AdDetailsViewModel : ObservableObject {
     @Published  var image: String = ""
     @Published  var isUrgent: Bool = false
     @Published  var description: String = ""
+    @Published  var siret: String?
     
     
    // Initializes an AdDetailsViewModel using AdViewModel
@@ -31,6 +32,9 @@ final class AdDetailsViewModel : ObservableObject {
         self.price = adViewModel.price
         self.creationDate = adViewModel.creationDate
         self.description = adViewModel.ad.ad.description
+        if let siret = adViewModel.ad.ad.siret {
+            self.siret = siret
+        }
     }
 }
 

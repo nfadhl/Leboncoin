@@ -35,6 +35,7 @@ final class AdsServiceTest: XCTestCase {
         XCTAssertEqual(ads?.first?.adID, 1461267313)
         XCTAssertEqual(ads?.first?.price, 140.00)
         XCTAssertEqual(ads?.first?.title, "Statue homme noir assis en plâtre polychrome")
+        XCTAssertNil(ads?.first?.siret)
     }
 }
 

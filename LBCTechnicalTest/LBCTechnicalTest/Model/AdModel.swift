@@ -16,6 +16,7 @@ struct AdModel {
     var price: Double
     var image: String
     var isUrgent: Bool
+    var siret: String?
 
     init(ad: AdDTO) {
         self.ad = ad
@@ -26,5 +27,6 @@ struct AdModel {
         self.price = ad.price
         self.image = ad.imagesUrl.thumb ?? ""
         self.isUrgent = ad.isUrgent
+        self.siret = ad.siret
     }
 }

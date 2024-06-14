@@ -37,6 +37,12 @@ struct AdDetailsView: View {
                     Text("**\(adDetailsVM.price)**")
                     Text(adDetailsVM.creationDate)
                     Text(adDetailsVM.categoryName)
+                    if let siret = adDetailsVM.siret{
+                        HStack {
+                            Text("**Siret: **")
+                            Text(siret)
+                        }
+                    }
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
                         Text("**Description**")

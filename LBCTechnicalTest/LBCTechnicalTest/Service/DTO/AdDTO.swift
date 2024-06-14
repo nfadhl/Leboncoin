@@ -16,6 +16,7 @@ struct AdDTO: Codable {
      let imagesUrl: ImagesDTO
      let creationDate: String
      let isUrgent: Bool
+     let siret: String?
     
     
     enum CodingKeys: String, CodingKey {
@@ -27,6 +28,7 @@ struct AdDTO: Codable {
         case imagesUrl = "images_url"
         case creationDate = "creation_date"
         case isUrgent = "is_urgent"
+        case siret
     }
     
     struct ImagesDTO: Codable {
